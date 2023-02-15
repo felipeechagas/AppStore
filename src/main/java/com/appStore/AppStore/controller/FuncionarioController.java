@@ -20,21 +20,21 @@ public class FuncionarioController {
     private FuncionarioRepository funcionarioRepository;
 
     @GetMapping("administrativo/funcionarios/cadastrar")
-    private ModelAndView cadastrar(Funcionario funcionario) {
+    public ModelAndView cadastrar(Funcionario funcionario) {
         ModelAndView mv = new ModelAndView("administrativo/funcionarios/cadastro");
         mv.addObject("funcionario", funcionario);
         return mv;
     }
 
     @GetMapping("administrativo/funcionarios/listar")
-    private ModelAndView listar() {
+    public ModelAndView listar() {
         ModelAndView mv = new ModelAndView("administrativo/funcionarios/lista");
         mv.addObject("listaFuncionarios", funcionarioRepository.findAll());
         return mv;
     }
 
     @PostMapping("administrativo/funcionarios/salvar")
-    private ModelAndView salvar(@Valid Funcionario funcionario, BindingResult bindingResult) {
+    public ModelAndView salvar(@Valid Funcionario funcionario, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return cadastrar(funcionario);
         } else {
@@ -44,13 +44,13 @@ public class FuncionarioController {
     }
 
     @GetMapping("administrativo/funcionarios/editar/{id}")
-    private ModelAndView editar(@PathVariable("id") Long id) {
+    public ModelAndView editar(@PathVariable("id") Long id) {
         Optional<Funcionario> funcionario = funcionarioRepository.findById(id);
         return cadastrar(funcionario.get());
     }
 
     @GetMapping("administrativo/funcionarios/remover/{id}")
-    private ModelAndView remover(@PathVariable("id") Long id) {
+    public ModelAndView remover(@PathVariable("id") Long id) {
         Optional<Funcionario> funcionario = funcionarioRepository.findById(id);
         funcionarioRepository.delete(funcionario.get());
         return listar();

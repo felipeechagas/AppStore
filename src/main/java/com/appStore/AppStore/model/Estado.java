@@ -20,7 +20,6 @@ public class Estado implements Serializable {
     private Long id;
     private String nome;
     private String sigla;
-
     public Estado() {
         super();
     }

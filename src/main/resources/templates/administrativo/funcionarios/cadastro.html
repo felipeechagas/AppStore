@@ -72,12 +72,10 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="cidade">Cidade</label> <select th:field="*{cidade}"
-                                                               class="form-control">
-                    <option th:each="cid: ${listaCidades}" th:value="${cid.id}"
-                            th:text="${cid.nome}"></option>
-                </select>
-
+                    <label for="cidade">Cidade</label>
+                    <select th:field="*{cidade}" class="form-control">
+                        <option th:each="cid: ${listaCidades}" th:value="${cid.id}" th:text="${cid.nome}"></option>
+                    </select>
 
                     <div class="invalid-feedback"></div>
                 </div>

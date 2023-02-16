@@ -19,7 +19,6 @@ public class FuncionarioController {
 
     @Autowired
     private FuncionarioRepository funcionarioRepository;
-
     @Autowired
     private CidadeRepository cidadeRepository;
 

@@ -25,4 +25,9 @@ public class Cidade implements Serializable {
     private String nome;
     @ManyToOne
     private Estado estado;
+
+    @Override
+    public String toString() {
+        return nome + " - " + estado.getSigla();
+    }
 }

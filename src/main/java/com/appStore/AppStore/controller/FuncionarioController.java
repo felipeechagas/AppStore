@@ -1,6 +1,7 @@
 package com.appStore.AppStore.controller;
 
 import com.appStore.AppStore.model.Funcionario;
+import com.appStore.AppStore.repository.CidadeRepository;
 import com.appStore.AppStore.repository.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
@@ -19,10 +20,14 @@ public class FuncionarioController {
     @Autowired
     private FuncionarioRepository funcionarioRepository;
 
+    @Autowired
+    private CidadeRepository cidadeRepository;
+
     @GetMapping("administrativo/funcionarios/cadastrar")
     public ModelAndView cadastrar(Funcionario funcionario) {
         ModelAndView mv = new ModelAndView("administrativo/funcionarios/cadastro");
         mv.addObject("funcionario", funcionario);
+        mv.addObject("listaCidades", cidadeRepository.findAll());
         return mv;
     }
 

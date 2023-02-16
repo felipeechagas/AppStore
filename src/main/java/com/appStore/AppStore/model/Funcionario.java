@@ -25,7 +25,8 @@ public class Funcionario implements Serializable {
     @Temporal(TemporalType.DATE) //consegue armazenar a data
     private Date dataSaida;
     private String cargo;
-    private String cidade;
+    @ManyToOne
+    private Cidade cidade;
     private String logradouro;
     private String numero;
     private String complemento;

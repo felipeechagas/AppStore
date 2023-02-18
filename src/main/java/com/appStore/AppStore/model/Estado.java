@@ -14,13 +14,14 @@ import java.io.Serializable;
 @Table(name = "tb_estado")
 public class Estado implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String nome;
-    private String sigla;
-    public Estado() {
-        super();
-    }
+  private static final long serialVersionUID = 1L;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long id;
+  private String nome;
+  private String sigla;
+
+  public Estado() {
+    super();
+  }
 }

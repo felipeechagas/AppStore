@@ -14,20 +14,20 @@ import java.io.Serializable;
 @Table(name = "tb_cidade")
 public class Cidade implements Serializable {
 
-    public Cidade(){
-        super();
-    }
+  public Cidade() {
+    super();
+  }
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String nome;
-    @ManyToOne
-    private Estado estado;
+  private static final long serialVersionUID = 1L;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long id;
+  private String nome;
+  @ManyToOne
+  private Estado estado;
 
-    @Override
-    public String toString() {
-        return nome + " - " + estado.getSigla();
-    }
+  @Override
+  public String toString() {
+    return nome + " - " + estado.getSigla();
+  }
 }

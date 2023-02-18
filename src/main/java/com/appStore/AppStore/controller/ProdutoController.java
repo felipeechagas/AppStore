@@ -19,44 +19,44 @@ import java.util.Optional;
 @RestController
 public class ProdutoController {
 
-    @Autowired
-    private ProdutoRepository produtoRepository;
+  @Autowired
+  private ProdutoRepository produtoRepository;
 
-    @GetMapping("administrativo/produtos/cadastrar")
-    public ModelAndView cadastrar(Produto produto) {
-        ModelAndView mv = new ModelAndView("administrativo/produtos/cadastro");
-        mv.addObject("produto", produto);
-        mv.addObject("listaProdutos", produtoRepository.findAll());
-        return mv;
-    }
+  @GetMapping("administrativo/produtos/cadastrar")
+  public ModelAndView cadastrar(Produto produto) {
+    ModelAndView mv = new ModelAndView("administrativo/produtos/cadastro");
+    mv.addObject("produto", produto);
+    mv.addObject("listaProdutos", produtoRepository.findAll());
+    return mv;
+  }
 
-    @GetMapping("administrativo/produtos/listar")
-    public ModelAndView listar() {
-        ModelAndView mv = new ModelAndView("administrativo/produtos/lista");
-        mv.addObject("listaProdutos", produtoRepository.findAll());
-        return mv;
-    }
+  @GetMapping("administrativo/produtos/listar")
+  public ModelAndView listar() {
+    ModelAndView mv = new ModelAndView("administrativo/produtos/lista");
+    mv.addObject("listaProdutos", produtoRepository.findAll());
+    return mv;
+  }
 
-    @PostMapping("administrativo/produtos/salvar")
-    public ModelAndView salvar(@Valid Produto produto, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return cadastrar(produto);
-        } else {
-            produtoRepository.saveAndFlush(produto);
-            return cadastrar(new Produto());
-        }
+  @PostMapping("administrativo/produtos/salvar")
+  public ModelAndView salvar(@Valid Produto produto, BindingResult bindingResult) {
+    if (bindingResult.hasErrors()) {
+      return cadastrar(produto);
+    } else {
+      produtoRepository.saveAndFlush(produto);
+      return cadastrar(new Produto());
     }
+  }
 
-    @GetMapping("administrativo/produtos/editar/{id}")
-    public ModelAndView editar(@PathVariable("id") Long id) {
-        Optional<Produto> produto = produtoRepository.findById(id);
-        return cadastrar(produto.get());
-    }
+  @GetMapping("administrativo/produtos/editar/{id}")
+  public ModelAndView editar(@PathVariable("id") Long id) {
+    Optional<Produto> produto = produtoRepository.findById(id);
+    return cadastrar(produto.get());
+  }
 
-    @GetMapping("administrativo/produtos/remover/{id}")
-    public ModelAndView remover(@PathVariable("id") Long id) {
-        Optional<Produto> produto = produtoRepository.findById(id);
-        produtoRepository.delete(produto.get());
-        return listar();
-    }
+  @GetMapping("administrativo/produtos/remover/{id}")
+  public ModelAndView remover(@PathVariable("id") Long id) {
+    Optional<Produto> produto = produtoRepository.findById(id);
+    produtoRepository.delete(produto.get());
+    return listar();
+  }
 }

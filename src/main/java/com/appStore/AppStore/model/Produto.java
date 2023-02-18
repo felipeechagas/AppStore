@@ -14,7 +14,7 @@ import java.io.Serializable;
 @Table(name = "tb_produto")
 public class Produto implements Serializable {
 
-  public Produto(){
+  public Produto() {
     super();
   }
 

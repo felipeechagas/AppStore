@@ -27,19 +27,20 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nome">Nome do Estado</label> <input type="text"
-                                                                    class="form-control" id="nome" placeholder="Nome Completo"
-                                                                    autofocus="autofocus" th:field="*{nome}" value="" />
+                                                                    class="form-control" id="nome"
+                                                                    placeholder="Nome Completo"
+                                                                    autofocus="autofocus" th:field="*{nome}" value=""/>
                     <div class="invalid-feedback"></div>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="salario">Sigla</label> <input type="text"
                                                               class="form-control" id="sigla" placeholder="Sigla"
-                                                              data-mask-reverse="true" th:field="*{sigla}" value="" />
+                                                              data-mask-reverse="true" th:field="*{sigla}" value=""/>
                     <div class="invalid-feedback"></div>
                 </div>
             </div>
 
-            <input type="hidden" id="id" th:field="*{id}" value="" />
+            <input type="hidden" id="id" th:field="*{id}" value=""/>
             <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
         </form>
     </div>

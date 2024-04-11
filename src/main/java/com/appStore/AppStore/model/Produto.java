@@ -14,18 +14,18 @@ import java.io.Serializable;
 @Table(name = "tb_produto")
 public class Produto implements Serializable {
 
-  public Produto() {
-    super();
-  }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String descricao;
+    private Double valorVenda;
+    private String categoria;
+    private String marca;
+    private Double quantidadeEstoque = 0.0;
+    private String nomeImagem;
 
-  private static final long serialVersionUID = 1L;
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
-  private String descricao;
-  private Double valorVenda;
-  private String categoria;
-  private String marca;
-  private Double quantidadeEstoque = 0.0;
+    public Produto() {
+        super();
+    }
 
 }

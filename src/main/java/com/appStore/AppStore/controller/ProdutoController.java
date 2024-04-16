@@ -19,7 +19,7 @@ import java.util.Optional;
 @RestController
 public class ProdutoController {
 
-  private static String caminhoImagens = "/home/frank/Documents/imagens/";
+  private static String caminhoImagens = "D:\\imagens";
 
   @Autowired
   private ProdutoRepository produtoRepository;
@@ -54,7 +54,6 @@ public class ProdutoController {
   @GetMapping("administrativo/produtos/mostrarImagem/{imagem}")
   @ResponseBody
   public byte[] retornarImagem(@PathVariable("imagem") String imagem) throws IOException {
-//		System.out.println(imagem);
     File imagemArquivo = new File(caminhoImagens + imagem);
     if (imagem != null || imagem.trim().length() > 0) {
       System.out.println("No IF");
@@ -66,24 +65,21 @@ public class ProdutoController {
   @PostMapping("/administrativo/produtos/salvar")
   public ModelAndView salvar(@Valid Produto produto, BindingResult result, @RequestParam("file") MultipartFile arquivo) {
     if (result.hasErrors()) {
-      // Se houver erros de validação, retornar para a página de cadastro
       return cadastrar(produto);
     }
 
+    produtoRepository.save(produto);
+
     try {
       if (!arquivo.isEmpty()) {
-        // Salvar a imagem apenas se um arquivo foi enviado
         byte[] bytes = arquivo.getBytes();
-        // Definir um caminho para salvar a imagem (de preferência, um caminho relativo)
-        String caminhoImagem = "/caminho/para/salvar/imagens/" + arquivo.getOriginalFilename();
-        // Salvar os bytes da imagem no caminho especificado
-        Files.write(Paths.get(caminhoImagem), bytes);
+        Path caminho = Paths.get(caminhoImagens + String.valueOf(produto.getId()) + arquivo.getOriginalFilename());
+        Files.write(caminho, bytes);
         // Definir o nome da imagem no produto
-        produto.setNomeImagem(arquivo.getOriginalFilename());
+        produto.setNomeImagem(String.valueOf(produto.getId()) + arquivo.getOriginalFilename());
+        produtoRepository.save(produto);
       }
 
-      // Salvar o produto no banco de dados
-      produtoRepository.save(produto);
 
     } catch (IOException e) {
       // Tratar exceções de E/S (ex: erro ao ler/escrever o arquivo)

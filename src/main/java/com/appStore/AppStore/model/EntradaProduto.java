@@ -10,7 +10,7 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-@Table(name = "entrada_produto")
+@Table(name = "entradaProduto")
 public class EntradaProduto implements Serializable {
 
   public EntradaProduto() {

@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @ToString
-@Table(name = "tb_produto")
+@Table(name = "produto")
 public class Produto implements Serializable {
 
     @Id

@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Setter
 @ToString
 @Entity
-@Table(name = "tb_cidade")
+@Table(name = "cidade")
 public class Cidade implements Serializable {
 
   public Cidade() {

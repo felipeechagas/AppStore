@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Setter
 @Entity
 @ToString
-@Table(name = "tb_papel")
+@Table(name = "papel")
 public class Papel implements Serializable {
 
   private static final long serialVersionUID = 1L;

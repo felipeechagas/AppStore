@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Setter
 @Entity
 @ToString
-@Table(name = "tb_estado")
+@Table(name = "estado")
 public class Estado implements Serializable {
 
   private static final long serialVersionUID = 1L;

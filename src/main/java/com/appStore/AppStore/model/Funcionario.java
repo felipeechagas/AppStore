@@ -12,7 +12,7 @@ import java.util.Date;
 @Setter
 @Entity
 @ToString
-@Table(name = "tb_funcionario")
+@Table(name = "funcionario")
 public class Funcionario implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,6 +32,8 @@ public class Funcionario implements Serializable {
   private String bairro;
   private String uf;
   private String cep;
+  private String email;
+  private String senha;
 
   public Funcionario() {
     super();
